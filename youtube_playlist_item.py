@@ -88,3 +88,36 @@ class YoutubePlaylistItem:
             total_seconds += int(video.getDurationSeconds())
         
         return int(total_seconds)
+    
+    
+    def getVideoResponseViewCount(self):
+        
+        video_request = self.youtube_connection.videos().list(
+            part='statistics,snippet',
+            id=self.getAllVideoIds()
+        )   
+        video_response = video_request.execute()
+
+        return video_response
+    
+    def getVideoViewCount(self):
+        
+        videos = []
+
+        video_response = self.getVideoResponseViewCount()
+
+        for item in video_response['items']:
+            video_views = item['statistics']['viewCount']
+            video_id = item['id']
+            video_name = item['snippet']['title']
+            youtube_link = f"https://www.youtu.be/{video_id}"
+
+            videos.append(
+                {
+                    'views': int(video_views),
+                    'url': youtube_link,
+                    'name': video_name
+                }
+            )
+
+        return videos
