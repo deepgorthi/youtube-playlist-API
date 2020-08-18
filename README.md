@@ -10,7 +10,7 @@ This can be run using the Username of a given channel as a CLI argument to the p
 
 The Username of a channel can be extracted frim the URL after searching for a channel in youtube search. 
 
-For example, after searching for AWS channel, the username is the last part of the URL. https://www.youtube.com/user/[AmazonWebServices]
+For example, after searching for AWS channel, the username is the last part of the URL. https://www.youtube.com/user/AmazonWebServices  --> <AmazonWebServices>
 
 Once the username is extracted, give it as an argument to get_playlist_times.py file.
 
